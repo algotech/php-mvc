@@ -1,1 +1,6 @@
-<?php echo 1 ?>
+<?php
+
+require 'libs/bootstrap.php';
+$bootstrap = new Bootstrap();
+
+?>
