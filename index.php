@@ -1,8 +1,11 @@
 <?php
 
-require 'libs/model.php'; //M
-require 'libs/view.php'; //V
-require 'libs/controller.php'; //C
+require 'config/paths.php';
+require 'config/database.php';
+
+require 'libs/model.php';
+require 'libs/view.php';
+require 'libs/controller.php';
 
 require 'libs/bootstrap.php';
 $bootstrap = new Bootstrap();

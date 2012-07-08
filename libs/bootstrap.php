@@ -1,5 +1,7 @@
 <?php
 
+require_once 'controllers/error.php';
+
 class Bootstrap {
 
     function __construct() {
@@ -12,12 +14,10 @@ class Bootstrap {
         array_shift($url);
 
         if (!file_exists($controllerFile)) {
-            require 'controllers/error.php';
-            $error = new ErrorController();
-            return false;
+            return new ErrorController();
         }
         
-        require $controllerFile;
+        require_once $controllerFile;
         $controller = new $controllerClass;
 
         if(!empty($url)) {
@@ -25,7 +25,11 @@ class Bootstrap {
             array_shift($url);
         } else $action = 'index';
 
-        $controller->{$action}($url);
+        if (method_exists($controller, $action)) {
+            $controller->{$action}($url);
+        } else {
+            return new ErrorController();
+        }
     }
 
 }
