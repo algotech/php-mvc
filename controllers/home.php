@@ -1,9 +1,9 @@
 <?php
 
-class HomeController {
+class HomeController extends Controller {
 
     function __construct() {
-        echo 'Home Controller <br />';
+        parent::__construct();
     }
 
     public function index($args) {

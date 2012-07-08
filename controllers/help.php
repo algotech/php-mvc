@@ -1,9 +1,11 @@
 <?php
 
-class HelpController {
+require_once 'models/help.php';
+
+class HelpController extends Controller {
 
     function __construct() {
-        echo 'Help controller<br />';
+        parent::__construct();
     }
     
     public function index($args = false) {
@@ -11,6 +13,7 @@ class HelpController {
     }
     
     public function other($args = false) {
+        $model = new HelpModel();
         echo 'We are inside other<br />';
     }
 

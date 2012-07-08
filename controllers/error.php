@@ -1,9 +1,11 @@
 <?php
 
-class ErrorController {
+class ErrorController extends Controller {
 
     function __construct() {
-        echo 'This is an error!<br />';
+        parent::__construct();
+        $this->view->msg = 'This page doesn\'t exist.';
+        $this->view->render('error/index');
     }
 
 }
