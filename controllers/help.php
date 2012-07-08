@@ -9,12 +9,13 @@ class HelpController extends Controller {
     }
     
     public function index($args = false) {
-        echo 'We are inside other<br />';
+        $this->view->msg = 'We are inside help/index';
+        $this->view->render('help/index');
     }
     
     public function other($args = false) {
-        $model = new HelpModel();
-        echo 'We are inside other<br />';
+        $this->view->model = new HelpModel();
+        $this->view->render('help/other');
     }
 
 }

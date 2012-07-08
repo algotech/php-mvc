@@ -1,8 +1,8 @@
+        </article>
+
+        <footer>
+            Custom footer
+        </footer>
+
     </body>
-
-    <footer>
-        Custom footer
-    </footer>
-
-</body>
-    
+</html>    

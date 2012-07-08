@@ -7,7 +7,7 @@ class HomeController extends Controller {
     }
 
     public function index($args) {
-        echo 'Index action <br />';
-        print_r($args);
+        $this->view->msg = 'We are inside home/index';
+        $this->view->render('home/index');
     }
 }
