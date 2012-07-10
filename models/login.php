@@ -6,7 +6,7 @@ class LoginModel extends Model {
         parent::__construct();
     }
 
-    public function login($login, $pass) {
+    public function getUserByLogin($login, $pass) {
         $db = $this->db->prepare("SELECT * FROM users
             WHERE login = :login AND password = :password");
         
@@ -15,6 +15,11 @@ class LoginModel extends Model {
             'password' => md5($pass),
         ));
         
-        return $db->fetchAll();
+        $res = $db->fetchAll();
+        if (!empty($res)) {
+            return $res[0];
+        }
+        
+        return Array();
     }
 }

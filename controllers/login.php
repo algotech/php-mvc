@@ -13,13 +13,13 @@ class LoginController extends Controller {
         $this->view->login = '';
         
         if (isset($_POST['login'], $_POST['password'])) {
-            $data = $login->login($_POST['login'], $_POST['password']);
+            $user = $login->getUserByLogin($_POST['login'], $_POST['password']);
             
-            if (empty($data)) {
+            if (empty($user)) {
                 $this->view->error = 'Login or Password wrong';
                 $this->view->login = $_POST['login'];
             } else {
-                $_SESSION['login'] = $data[0];
+                UserGuard::login($user);
                 header('Location: /');
                 exit;
             }

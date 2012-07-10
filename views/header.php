@@ -8,9 +8,9 @@
     <body>
         <header>
             Custom Header
-            <?php if(isset($_SESSION['login'])): ?>
+            <?php if(UserGuard::isLoggedIn()): ?>
                 <div style="float:right;">
-                    Hello, <?php echo $_SESSION['login']['login'] ?>!
+                    Hello, <?php echo UserGuard::getUserLogin(); ?>!
                 </div>
             <?php endif ?>
         </header>
