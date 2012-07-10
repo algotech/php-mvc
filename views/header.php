@@ -8,6 +8,11 @@
     <body>
         <header>
             Custom Header
+            <?php if(isset($_SESSION['login'])): ?>
+                <div style="float:right;">
+                    Hello, <?php echo $_SESSION['login']['login'] ?>!
+                </div>
+            <?php endif ?>
         </header>
         
         <nav>

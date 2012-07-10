@@ -29,3 +29,8 @@ article {
     background: gray;
     padding: 20px;
 }
+
+.error {
+    color: red;
+    padding-bottom: 10px;
+}

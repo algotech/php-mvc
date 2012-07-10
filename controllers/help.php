@@ -1,7 +1,5 @@
 <?php
 
-require_once 'models/help.php';
-
 class HelpController extends Controller {
 
     function __construct() {
@@ -14,6 +12,7 @@ class HelpController extends Controller {
     }
     
     public function other($args = false) {
+        $this->loadModel('help');
         $this->view->model = new HelpModel();
         $this->view->render('help/other');
     }
