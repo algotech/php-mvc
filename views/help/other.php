@@ -1,1 +1,1 @@
-Help / Other
+<?php echo $this->help->getCustomMessage() ?>

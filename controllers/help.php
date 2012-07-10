@@ -13,7 +13,7 @@ class HelpController extends Controller {
     
     public function other($args = false) {
         $this->loadModel('help');
-        $this->view->model = new HelpModel();
+        $this->view->help = new HelpModel();
         $this->view->render('help/other');
     }
 
