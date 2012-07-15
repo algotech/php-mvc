@@ -31,7 +31,24 @@ class View {
         }
     }
     
-    public function urlTo($link, $module = null) {
+    public function loadPartial($view, $params = array()) {
+        
+        $view = array_reverse(explode('/', $view));
+        $view[0] = '_' . $view[0];
+        
+        if(empty($view[1])) $view[1] = $this->controller->getController();
+        if(empty($view[2])) $view[2] = $this->controller->getModule();
+        
+        $view[1] = 'views/' . $view[1];
+        
+        $viewFilePath = implode('/', array_reverse($view));
+        
+        extract($params, EXTR_SKIP);
+        
+        require 'modules/' . $viewFilePath . '.php';
+    }
+    
+    public function getUrl($link, $module = null) {
         if (is_null($module)) $module = $this->controller->getModule();
         return '/' . $module . '/' . $link;
     }
