@@ -16,9 +16,9 @@
         </header>
         
         <nav>
-            <a href="/home">Home</a>
-            <a href="/help">Help</a>
-            <a href="/login">Login</a>
+            <a href="<?php echo $this->urlTo('home') ?>">Home</a>
+            <a href="<?php echo $this->urlTo('help') ?>">Help</a>
+            <a href="<?php echo $this->urlTo('login') ?>">Login</a>
         </nav>
          
         <article>

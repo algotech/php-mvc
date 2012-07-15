@@ -1,5 +1,9 @@
 <?php
 
+define('DEFAULT_MODULE', 'test');
+define('DEFAULT_CONTROLLER', 'home');
+define('DEFAULT_ACTION', 'index');
+
 require 'config/paths.php';
 require 'config/database.php';
 

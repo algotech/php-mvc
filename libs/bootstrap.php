@@ -1,29 +1,49 @@
 <?php
 
-require_once 'controllers/error.php';
+require_once 'modules/default/controllers/error.php';
 
 class Bootstrap {
 
     function __construct() {
-        $url = isset($_GET['url']) ? $_GET['url'] : 'home';
+        $url = isset($_GET['url']) ? $_GET['url'] : DEFAULT_MODULE;
         $url = explode('/', trim($url, '/'));
 
-        $controller = $url[0];
-        $controllerClass = $controller . 'Controller';
-        $controllerFile = 'controllers/' . $controller . '.php';
+        // Module
+        $module = $url[0];
+        $modulePath = 'modules/' . $module;
         array_shift($url);
-
-        if (!file_exists($controllerFile)) {
+        
+        if (!file_exists($modulePath)) {
             return new ErrorController();
         }
         
+        // Controller
+        if (empty($url)) $url[] = DEFAULT_CONTROLLER;
+        
+        $controller = $url[0];
+        array_shift($url);
+        
+        $controllerClass = $controller . 'Controller';
+        $controllerFile = $modulePath . '/controllers/' . $controller . '.php';
+
+        if (!file_exists($controllerFile)) {
+            
+            return new ErrorController();
+        }
+        
+        // Action
+        if (empty($url)) $url[] = DEFAULT_ACTION;
+        
+        $action = $url[0];
+        array_shift($url);
+        
+        // Call
         require_once $controllerFile;
         $controller = new $controllerClass;
-
-        if(!empty($url)) {
-            $action = $url[0];
-            array_shift($url);
-        } else $action = 'index';
+        
+        $controller->setModule($module);
+        $controller->setController($controller);
+        $controller->setAction($action);
 
         if (method_exists($controller, $action)) {
             $controller->{$action}($url);
