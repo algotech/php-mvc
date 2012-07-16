@@ -2,6 +2,6 @@
 
 define('DB_TYPE', 'mysql');
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'php-mvc');
-define('DB_USER', 'root');
-define('DB_PASS', 'scaner');
+define('DB_NAME', 'ctutunaru');
+define('DB_USER', 'ctutunaru');
+define('DB_PASS', 'ctutunaru');

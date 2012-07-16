@@ -4,7 +4,7 @@ class Database extends PDO {
 
     static private $instance = null;
     
-    private function __construct() {
+    public function __construct() {
         parent::__construct(sprintf("%s:host=%s;dbname=%s", DB_TYPE, DB_HOST, DB_NAME), DB_USER, DB_PASS);
     }
 
