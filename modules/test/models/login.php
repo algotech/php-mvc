@@ -7,6 +7,7 @@ class LoginModel extends Model {
     }
 
     public function getUserByLogin($login, $pass) {
+        
         $db = $this->db->prepare("SELECT * FROM users
             WHERE login = :login AND password = :password");
         
