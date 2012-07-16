@@ -27,7 +27,6 @@ class Bootstrap {
         $controllerFile = $modulePath . '/controllers/' . $controllerName . '.php';
 
         if (!file_exists($controllerFile)) {
-            
             return new ErrorController();
         }
         
